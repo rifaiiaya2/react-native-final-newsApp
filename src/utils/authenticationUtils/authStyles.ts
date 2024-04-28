@@ -1,6 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 export const authStyle = StyleSheet.create({
+  scrollContainer: {
+    flexGrow: 1,
+    paddingBottom: 0,
+  },
   container: {
     backgroundColor: '#F5F5F5',
     flex: 1,
@@ -12,6 +16,10 @@ export const authStyle = StyleSheet.create({
   topImage: {
     width: '100%',
     height: 130,
+  },
+  textView: {
+    paddingVertical: 18,
+    marginTop: 40,
   },
   halfTopImage: {
     width: '100%',
@@ -35,6 +43,9 @@ export const authStyle = StyleSheet.create({
     fontSize: 18,
     color: '#262626',
     marginBottom: 25,
+  },
+  errorsStyle: {
+    color: 'red',
   },
   createAccountTxt: {
     textAlign: 'center',
@@ -65,13 +76,6 @@ export const authStyle = StyleSheet.create({
     fontSize: 18,
     color: '#262626',
   },
-  forgotPasswordTxt: {
-    color: '#9A9A9A',
-    textAlign: 'right',
-    width: '90%',
-    fontSize: 15,
-    textTransform: 'capitalize',
-  },
   signInButtonContainer: {
     flexDirection: 'row',
     marginTop: 70,
@@ -98,6 +102,10 @@ export const authStyle = StyleSheet.create({
     marginLeft: 24,
     flexWrap: 'wrap',
     justifyContent: 'center',
+  },
+  signText: {
+    fontWeight: '900',
+    fontSize: 20,
   },
   leftVectorContainer: {
     position: 'absolute',

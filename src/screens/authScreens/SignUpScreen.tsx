@@ -3,7 +3,6 @@ import {
   Text,
   Image,
   ScrollView,
-  StatusBar,
   Pressable,
   ActivityIndicator,
 } from 'react-native';
@@ -18,6 +17,7 @@ import {authStyle} from '../../utils/authenticationUtils/authStyles';
 import {useDispatch} from 'react-redux';
 import {setAuthToken} from '../../redux/slices/authSlice';
 import {signupUser} from '../../utils/authenticationUtils/authServices';
+import GradientStatusBar from '../../components/atoms/GradientStatusBar';
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required('Required'),
@@ -84,14 +84,8 @@ const SignUpScreen = () => {
         signupUser(values, handleSignUpSuccess, handleSignUpFailure)
       }>
       {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
-        <ScrollView contentContainerStyle={{flexGrow: 1, paddingBottom: 0}}>
-          <StatusBar translucent={true} backgroundColor="transparent" />
-          <LinearGradient
-            colors={['#e9be27', '#de9b52', '#d7856d', '#e3ab3f']}
-            style={{
-              height: StatusBar.currentHeight,
-            }}
-          />
+        <ScrollView contentContainerStyle={authStyle.scrollContainer}>
+          <GradientStatusBar />
 
           <View style={authStyle.container}>
             {isLoading ? (
@@ -126,7 +120,7 @@ const SignUpScreen = () => {
                   icon={require('../../assets/icons/userEmail.png')}
                 />
                 {touched.email && errors.email && (
-                  <Text style={{color: 'red'}}>{errors.email}</Text>
+                  <Text style={authStyle.errorsStyle}>{errors.email}</Text>
                 )}
                 <FormikTextInput
                   name="password"
@@ -139,7 +133,7 @@ const SignUpScreen = () => {
                   icon={require('../../assets/icons/userPassword.png')}
                 />
                 {touched.password && errors.password && (
-                  <Text style={{color: 'red'}}>{errors.password}</Text>
+                  <Text style={authStyle.errorsStyle}>{errors.password}</Text>
                 )}
 
                 <Pressable
@@ -162,9 +156,7 @@ const SignUpScreen = () => {
             )}
             <Text style={authStyle.footerText}>
               Already have an account?
-              <Text
-                onPress={handleToLogin}
-                style={{fontWeight: '900', fontSize: 20}}>
+              <Text onPress={handleToLogin} style={authStyle.signText}>
                 Log-In
               </Text>
             </Text>

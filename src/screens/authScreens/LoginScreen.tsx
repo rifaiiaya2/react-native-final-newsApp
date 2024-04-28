@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  StatusBar,
-  Pressable,
-} from 'react-native';
+import {View, Text, Image, ScrollView, Pressable} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import FormikTextInput from '../../components/atoms/FormikTextInput';
@@ -17,6 +10,7 @@ import {authStyle} from '../../utils/authenticationUtils/authStyles';
 import {useDispatch} from 'react-redux';
 import {setAuthToken} from '../../redux/slices/authSlice';
 import {loginUser} from '../../utils/authenticationUtils/authServices';
+import GradientStatusBar from '../../components/atoms/GradientStatusBar';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -27,26 +21,7 @@ const validationSchema = Yup.object().shape({
 const LoginScreen = () => {
   const navigation = useNavigation<MainNavigatorNavigationProp>();
   const dispatch = useDispatch();
-  // const loginUser = async (values: ILoginFormValues) => {
-  //   try {
-  //     const response = await axios.post(
-  //       'https://backend-practice.euriskomobility.me/login',
-  //       values,
-  //       {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //       },
-  //     );
-  //     console.log('Data getted successfully:', response.data);
-  //     if (response.status === 200) {
-  //       dispatch(setAuthToken(response.data.accessToken));
-  //       navigation.navigate('HomeScreen');
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+
   const handleToSignUp = () => {
     navigation.navigate('SignUpScreen');
   };
@@ -70,14 +45,8 @@ const LoginScreen = () => {
         loginUser(values, handleLoginSuccess, handleLoginFailure)
       }>
       {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
-        <ScrollView contentContainerStyle={{flexGrow: 1, paddingBottom: 0}}>
-          <StatusBar translucent={true} backgroundColor="transparent" />
-          <LinearGradient
-            colors={['#e9be27', '#de9b52', '#d7856d', '#e3ab3f']}
-            style={{
-              height: StatusBar.currentHeight,
-            }}
-          />
+        <ScrollView contentContainerStyle={authStyle.scrollContainer}>
+          <GradientStatusBar />
           <View style={authStyle.container}>
             <View style={authStyle.topImageContainer}>
               <Image
@@ -85,7 +54,7 @@ const LoginScreen = () => {
                 style={authStyle.topImage}
               />
             </View>
-            <View style={{paddingVertical: 18, marginTop: 40}}>
+            <View style={authStyle.textView}>
               <Text style={authStyle.helloText}>Hello</Text>
             </View>
             <View>
@@ -101,7 +70,7 @@ const LoginScreen = () => {
               icon={require('../../assets/icons/userEmail.png')}
             />
             {touched.email && errors.email && (
-              <Text style={{color: 'red'}}>{errors.email}</Text>
+              <Text style={authStyle.errorsStyle}>{errors.email}</Text>
             )}
             <FormikTextInput
               name="password"
@@ -114,7 +83,7 @@ const LoginScreen = () => {
               icon={require('../../assets/icons/userPassword.png')}
             />
             {touched.password && errors.password && (
-              <Text style={{color: 'red'}}>{errors.password}</Text>
+              <Text style={authStyle.errorsStyle}>{errors.password}</Text>
             )}
 
             <Pressable
@@ -136,9 +105,7 @@ const LoginScreen = () => {
 
             <Text style={authStyle.footerText}>
               Don't have an account?
-              <Text
-                onPress={handleToSignUp}
-                style={{fontWeight: '900', fontSize: 20}}>
+              <Text onPress={handleToSignUp} style={authStyle.signText}>
                 Sign-Up
               </Text>
             </Text>

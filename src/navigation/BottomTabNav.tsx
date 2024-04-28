@@ -3,6 +3,7 @@ import FeedsScreen from '../screens/FeedsScreen';
 import {Image} from 'react-native';
 import {getPlatformIcon} from '../utils/platformIcons';
 import LogoutScreen from '../screens/authScreens/LogoutScreen';
+import DetailFeedsScreen from '../screens/DetailNewsScreen';
 
 const Tab = createBottomTabNavigator();
 const BottomTabNav = () => {
@@ -10,21 +11,21 @@ const BottomTabNav = () => {
     <Tab.Navigator
       initialRouteName="FeedsScreen"
       screenOptions={{
-        tabBarActiveTintColor: '#de9b52',
-        tabBarInactiveTintColor: '#725b41',
+        tabBarActiveTintColor: '#e3ab3f',
+        tabBarInactiveTintColor: '#918a86',
         headerShown: false,
       }}>
       <Tab.Screen
         name="FeedsScreen"
         component={FeedsScreen}
         options={{
-          tabBarLabel: 'Feeds',
+          tabBarLabel: 'News',
           tabBarIcon: () => (
             <Image
               source={getPlatformIcon('feeds')}
               style={{
-                width: 45,
-                height: 32,
+                width: 48,
+                height: 38,
                 resizeMode: 'contain',
               }}
             />
@@ -32,16 +33,24 @@ const BottomTabNav = () => {
         }}
       />
       <Tab.Screen
+        name="Details"
+        component={DetailFeedsScreen}
+        options={{
+          tabBarItemStyle: {height: 0},
+          tabBarLabel: () => null,
+        }}
+      />
+      <Tab.Screen
         name="Logout"
         component={LogoutScreen}
         options={{
-          tabBarLabel: 'Logout',
+          tabBarLabel: 'Sign-Out',
           tabBarIcon: () => (
             <Image
               source={getPlatformIcon('logout')}
               style={{
-                width: 45,
-                height: 32,
+                width: 48,
+                height: 40,
                 resizeMode: 'contain',
               }}
             />

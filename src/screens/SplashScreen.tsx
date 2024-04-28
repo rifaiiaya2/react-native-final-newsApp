@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
-import {View, ActivityIndicator} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import RNBootSplash from 'react-native-bootsplash'; // import the bootsplash module
 import {useNavigation} from '@react-navigation/native';
 import {MainNavigatorNavigationProp} from '../navigation/Main.Navigator.types';
 import {useSelector} from 'react-redux';
@@ -13,19 +14,23 @@ const SplashScreen = () => {
 
   useEffect(() => {
     if (rehydrated) {
-      if (accessToken) {
-        navigation.navigate('Feeds');
-      } else {
-        navigation.navigate('LoginScreen');
-      }
+      RNBootSplash.hide({fade: true}).then(() => {
+        console.log('BootSplash success');
+        if (accessToken) {
+          navigation.navigate('Feeds');
+        } else {
+          navigation.navigate('LoginScreen');
+        }
+      });
     }
   }, [accessToken, rehydrated, navigation]);
 
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <ActivityIndicator size="large" color="red" />
-    </View>
-  );
+  return <View style={styles.container} />;
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 export default SplashScreen;

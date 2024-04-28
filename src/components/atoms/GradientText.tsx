@@ -13,21 +13,24 @@ const GradientText = (props: IGradientTextProps) => {
   return (
     <MaskedView
       style={StyleSheet.absoluteFill}
-      maskElement={<Text style={[styles.text, style]}>{children}</Text>}>
+      maskElement={<Text style={[styles.maskedText, style]}>{children}</Text>}>
       <LinearGradient
         colors={['#e9be27', '#c855aa', '#e3ab3f', '#d68270']}
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
-        style={{flex: 1}}
+        style={styles.linearGradientStyle}
       />
     </MaskedView>
   );
 };
 
 const styles = StyleSheet.create({
-  text: {
+  maskedText: {
     fontSize: 76,
     color: 'black',
+  },
+  linearGradientStyle: {
+    flex: 1,
   },
 });
 
