@@ -48,7 +48,7 @@ Welcome to the World News App
 
 ## Getting Started
 
-To get started with the Recipe Social Media App:
+To get started with the World News App:
 
 1. Clone the repository to your local machine: https://github.com/rifaiiaya2/react-native-final-newsApp
 2. Install dependencies with `npm install`.
