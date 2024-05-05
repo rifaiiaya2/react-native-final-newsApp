@@ -1,9 +1,9 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import AppCarousel from './AppCarousel';
-import NewsCardComponent from '../moleculs/NewsCardComponent';
-import NewsTitleComponent from './NewsTitleComponent';
-import GradientStatusBar from './GradientStatusBar';
+import AppCarousel from '../atoms/AppCarousel';
+import NewsCardComponent from './NewsCardComponent';
+import NewsTitleComponent from '../atoms/NewsTitleComponent';
+import GradientStatusBar from '../atoms/GradientStatusBar';
 
 const NewsComponent = () => {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '../redux/store/store';
 
-import NewsComponent from '../components/atoms/NewsComponent';
+import NewsComponent from '../components/moleculs/NewsComponent';
 
 const FeedsScreen = () => {
   const accessToken = useSelector((state: RootState) => state.auth.accessToken);

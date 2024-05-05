@@ -73,10 +73,7 @@ const DetailsFeedComponent = () => {
         <View style={styles.imageContainer}>
           <Image
             source={getImageSouce(item.image_url)}
-            style={{
-              width: '100%',
-              height: '100%',
-            }}
+            style={{width: '100%', height: '100%'}}
           />
         </View>
         <View style={styles.iconContainer}>

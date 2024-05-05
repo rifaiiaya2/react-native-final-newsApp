@@ -23,7 +23,6 @@ const GradientText = (props: IGradientTextProps) => {
     </MaskedView>
   );
 };
-
 const styles = StyleSheet.create({
   maskedText: {
     fontSize: 76,

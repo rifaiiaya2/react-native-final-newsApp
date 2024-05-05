@@ -1,5 +1,5 @@
 import axios, {AxiosError} from 'axios';
-import {API_URL} from '../../apiUrl/api';
+import {API_URL} from '../../utils/api';
 
 interface LoginCredentials {
   email: string;

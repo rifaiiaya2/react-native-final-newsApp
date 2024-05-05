@@ -12,13 +12,14 @@ import {
 } from 'redux-persist';
 import persistStore from 'redux-persist/es/persistStore';
 
-const rootReducer = combineReducers({
-  auth: authSlice,
-});
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
 };
+const rootReducer = combineReducers({
+  auth: authSlice,
+});
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
   reducer: persistedReducer,

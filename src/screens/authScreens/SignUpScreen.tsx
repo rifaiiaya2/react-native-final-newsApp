@@ -8,15 +8,15 @@ import {
 } from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import FormikTextInput from '../../components/atoms/FormikTextInput';
+import CustomTextInput from '../../components/atoms/CustomTextInput';
 import LinearGradient from 'react-native-linear-gradient';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {MainNavigatorNavigationProp} from '../../navigation/Main.Navigator.types';
-import {authStyle} from '../../utils/authenticationUtils/authStyles';
+import {authStyle} from '../../services/authentication/authStyles';
 import {useDispatch} from 'react-redux';
 import {setAuthToken} from '../../redux/slices/authSlice';
-import {signupUser} from '../../utils/authenticationUtils/authServices';
+import {signupUser} from '../../services/authentication/authServices';
 import GradientStatusBar from '../../components/atoms/GradientStatusBar';
 
 const validationSchema = Yup.object().shape({
@@ -48,34 +48,6 @@ const SignUpScreen = () => {
   const handleSignUpFailure = (error: any) => {
     console.error('Signup failed:', error);
   };
-  // const signupUser = async (values: ISignUpFormValues) => {
-  //   setIsLoading(true);
-  //   try {
-  //     const response = await axios.post(
-  //       'https://backend-practice.euriskomobility.me/signup',
-  //       {
-  //         values,
-  //       },
-  //       {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //       },
-  //     );
-  //     console.log('Data getted successfully:', response.data);
-  //     if (response.status === 200) {
-  //       dispatch(setAuthToken(response.data.accessToken));
-  //       navigation.navigate('HomeScreen');
-  //     } else {
-  //       console.error('Signup failed:', response.status, response.data);
-  //     }
-  //   } catch (error) {
-  //     console.error('Signup error:', error);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-
   return (
     <Formik
       initialValues={{username: '', email: '', password: ''}}
@@ -101,7 +73,7 @@ const SignUpScreen = () => {
                 <View>
                   <Text style={authStyle.createAccountTxt}>Create account</Text>
                 </View>
-                <FormikTextInput
+                <CustomTextInput
                   name="username"
                   onChangeText={handleChange('username')}
                   onBlur={handleBlur('username')}
@@ -110,7 +82,7 @@ const SignUpScreen = () => {
                   placeholderTextColor="#9a9a9a"
                   icon={require('../../assets/icons/user.png')}
                 />
-                <FormikTextInput
+                <CustomTextInput
                   name="email"
                   onChangeText={handleChange('email')}
                   onBlur={handleBlur('email')}
@@ -122,7 +94,7 @@ const SignUpScreen = () => {
                 {touched.email && errors.email && (
                   <Text style={authStyle.errorsStyle}>{errors.email}</Text>
                 )}
-                <FormikTextInput
+                <CustomTextInput
                   name="password"
                   onChangeText={handleChange('password')}
                   onBlur={handleBlur('password')}

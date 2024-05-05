@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, Modal, StyleSheet, Image, Pressable} from 'react-native';
-import useAuthLogout from '../../utils/authenticationUtils/authLogout';
-import {authStyle} from '../../utils/authenticationUtils/authStyles';
+import useAuthLogout from '../../services/authentication/useAuthLogout';
+import {authStyle} from '../../services/authentication/authStyles';
 import GradientText from './GradientText';
 import GradientStatusBar from './GradientStatusBar';
 

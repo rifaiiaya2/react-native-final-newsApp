@@ -16,9 +16,9 @@ import {
   getAccessToken,
   getRefreshToken,
   saveAccessToken,
-} from '../../utils/tokenService';
+} from '../../services/tokenService';
 import axios from 'axios';
-import {API_URL} from '../../apiUrl/api';
+import {API_URL} from '../../utils/api';
 import CustomActivityIndicator from '../atoms/CustomActivityIndicator';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 

@@ -1,15 +1,15 @@
 import {View, Text, Image, ScrollView, Pressable} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import FormikTextInput from '../../components/atoms/FormikTextInput';
+import CustomTextInput from '../../components/atoms/CustomTextInput';
 import LinearGradient from 'react-native-linear-gradient';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {MainNavigatorNavigationProp} from '../../navigation/Main.Navigator.types';
-import {authStyle} from '../../utils/authenticationUtils/authStyles';
+import {authStyle} from '../../services/authentication/authStyles';
 import {useDispatch} from 'react-redux';
 import {setAuthToken} from '../../redux/slices/authSlice';
-import {loginUser} from '../../utils/authenticationUtils/authServices';
+import {loginUser} from '../../services/authentication/authServices';
 import GradientStatusBar from '../../components/atoms/GradientStatusBar';
 
 const validationSchema = Yup.object().shape({
@@ -60,7 +60,7 @@ const LoginScreen = () => {
             <View>
               <Text style={authStyle.signInText}>Sign in to your account</Text>
             </View>
-            <FormikTextInput
+            <CustomTextInput
               name="email"
               onChangeText={handleChange('email')}
               onBlur={handleBlur('email')}
@@ -72,7 +72,7 @@ const LoginScreen = () => {
             {touched.email && errors.email && (
               <Text style={authStyle.errorsStyle}>{errors.email}</Text>
             )}
-            <FormikTextInput
+            <CustomTextInput
               name="password"
               onChangeText={handleChange('password')}
               onBlur={handleBlur('password')}

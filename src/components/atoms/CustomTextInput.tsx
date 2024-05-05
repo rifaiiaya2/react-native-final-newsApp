@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, Image, TextInput, TextInputProps} from 'react-native';
-import {authStyle} from '../../utils/authenticationUtils/authStyles';
+import {authStyle} from '../../services/authentication/authStyles';
 
 interface IFormikTextInputProps extends TextInputProps {
   icon?: any;
   name: string;
 }
 
-const FormikTextInput = ({icon, ...props}: IFormikTextInputProps) => {
+const CustomTextInput = ({icon, ...props}: IFormikTextInputProps) => {
   return (
     <View style={authStyle.inputContainer}>
       {icon && <Image source={icon} style={authStyle.inputIcon} />}
@@ -16,4 +16,4 @@ const FormikTextInput = ({icon, ...props}: IFormikTextInputProps) => {
   );
 };
 
-export default FormikTextInput;
+export default CustomTextInput;

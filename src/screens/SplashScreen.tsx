@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
-import RNBootSplash from 'react-native-bootsplash'; // import the bootsplash module
+import RNBootSplash from 'react-native-bootsplash';
 import {useNavigation} from '@react-navigation/native';
 import {MainNavigatorNavigationProp} from '../navigation/Main.Navigator.types';
 import {useSelector} from 'react-redux';
