@@ -63,6 +63,6 @@ Welcome to the World News App
 
 To get started with the Recipe Social Media App:
 
-1. Clone the repository to your local machine: https://github.com/rifaiiaya2/react-native-final-newsApp
+1. Clone the repository to your local machine: <https://github.com/rifaiiaya2/react-native-final-newsApp>
 2. Install dependencies with `npm install`.
 3. Start the app with `npx react-native run-android` or `npx react-native run-ios` depending on your target platform.
