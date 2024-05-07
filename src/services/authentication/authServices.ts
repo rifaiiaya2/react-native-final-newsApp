@@ -1,6 +1,6 @@
 import axios, {AxiosError} from 'axios';
-import {API_URL} from '../../utils/api';
 
+import {API_URL} from '@env';
 interface LoginCredentials {
   email: string;
   password: string;
@@ -57,7 +57,7 @@ export const signupUser = async (
       },
     );
 
-    if (response.status === 200 && response.data.accessToken) {
+    if (response.status === 201 && response.data.accessToken) {
       onSuccess({
         accessToken: response.data.accessToken,
         refreshToken: response.data.refreshToken,

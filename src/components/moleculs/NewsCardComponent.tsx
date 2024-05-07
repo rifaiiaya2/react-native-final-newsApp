@@ -5,12 +5,12 @@ import {
   Text,
   Image,
   RefreshControl,
+  FlatList,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {MainNavigatorNavigationProp} from '../../navigation/Main.Navigator.types';
 import {News} from '../../utils/newsType';
-import {FlatList} from 'react-native-gesture-handler';
 import GradientText from '../atoms/GradientText';
 import {
   getAccessToken,
@@ -18,9 +18,9 @@ import {
   saveAccessToken,
 } from '../../services/tokenService';
 import axios from 'axios';
-import {API_URL} from '../../utils/api';
 import CustomActivityIndicator from '../atoms/CustomActivityIndicator';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {API_URL} from '@env';
 
 const NewsCardComponent = () => {
   const navigation = useNavigation<MainNavigatorNavigationProp>();
@@ -52,7 +52,6 @@ const NewsCardComponent = () => {
           },
         },
       );
-      console.log('data length', response.data.results.length);
       if (response.data.results.length > 0) {
         setNewsData(prevData => [...prevData, ...response.data.results]);
         setPage(prevPage => prevPage + 1);

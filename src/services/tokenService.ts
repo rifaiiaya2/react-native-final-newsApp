@@ -8,7 +8,6 @@ export const getAccessToken = (): string | null => {
 
 export const getRefreshToken = (): string | null => {
   const state = store.getState();
-  console.log('refresh state', state);
   return state.auth.refreshToken;
 };
 export const saveAccessToken = (accessToken: string) => {

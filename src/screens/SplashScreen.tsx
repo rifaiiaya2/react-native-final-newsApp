@@ -15,7 +15,6 @@ const SplashScreen = () => {
   useEffect(() => {
     if (rehydrated) {
       RNBootSplash.hide({fade: true}).then(() => {
-        console.log('BootSplash success');
         if (accessToken) {
           navigation.navigate('Feeds');
         } else {
